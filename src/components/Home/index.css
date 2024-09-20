@@ -1,0 +1,87 @@
+.home-main-content-container {
+  min-height: auto;
+}
+
+.search-bar-container {
+  padding: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar-container input {
+  width: 90%;
+  height: 35px;
+  flex-shrink: 1;
+  flex-grow: 0;
+  border: 1px solid #606060;
+  padding: 0 10px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-bar-container button {
+  padding: 5px 20px;
+  border: 1px solid #606060;
+  color: #383838;
+  outline: none;
+  cursor: pointer;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar-container button:hover {
+  transform: scale(1.02);
+}
+
+.search-bar-container button:active {
+  transform: scale(0.96);
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+}
+
+.failure-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  text-align: center;
+}
+
+.failure-container img {
+  width: 70%;
+}
+
+.failure-container h1 {
+  font-size: 24px;
+}
+
+.failure-container p {
+  color: #475569;
+  font-size: 18px;
+  margin: 0;
+}
+
+.failure-container button {
+  margin: 20px;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 10px 24px;
+  outline: none;
+  background-color: #4f46e5;
+}
+
+.failure-container button:hover {
+  transform: scale(1.02);
+}
+
+.failure-container button:active {
+  transform: scale(0.96);
+}
