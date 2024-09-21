@@ -1,0 +1,50 @@
+.sidebar-main-container {
+  display: none;
+  font-family: 'Roboto';
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar-main-container {
+    display: block;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 80vh;
+    max-height: 90vh;
+  }
+}
+
+.sidebar-navigators-main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-tab-btn {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.sidebar-tab-para {
+  margin: 0 0 0 15px;
+  font-size: 16px;
+}
+
+.sidebar-contact-details-main-container {
+  padding: 20px;
+}
+
+.contact-app-icons-container {
+  display: flex;
+  align-items: center;
+}
+
+.contact-app-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}

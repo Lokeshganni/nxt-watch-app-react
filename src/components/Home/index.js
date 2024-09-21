@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import {LuSearch} from 'react-icons/lu'
 import Header from '../Header'
 import HomeBannerSection from '../HomeBannerSection'
+import SideBar from '../SideBar'
 import Videos from '../Videos'
 import {
   HomeMainContainer,
@@ -127,8 +128,8 @@ class Home extends Component {
       <div>
         <Header />
         <div className="home-app-container">
-          {/* <div >large screen side bar</div> */}
-          <div>
+          <SideBar />
+          <div className="home-right-container">
             <HomeBannerSection />
             <ThemeContext.Consumer>
               {value => {

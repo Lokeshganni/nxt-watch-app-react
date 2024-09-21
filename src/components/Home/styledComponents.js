@@ -6,6 +6,7 @@ export const HomeMainContainer = styled.div`
 
 export const InputContainer = styled.input`
   background-color: ${props => (props.isDarkTheme ? '#181818' : '#ffffff ')};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#000000 ')};
 `
 
 export const SearchButton = styled.button`

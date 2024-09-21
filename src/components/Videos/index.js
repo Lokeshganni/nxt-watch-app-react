@@ -1,3 +1,4 @@
+import VideoCard from '../VideoCard'
 import {Header, Para} from '../../styledComponents'
 import './index.css'
 
@@ -6,10 +7,16 @@ const Videos = props => {
 
   return (
     <>
-      {data.length === 0 ? (
-        <div>
-          <h1>hiii</h1>
-        </div>
+      {data.length !== 0 ? (
+        <ul className="videos-list-ul-container">
+          {data.map(each => (
+            <VideoCard
+              isDarkTheme={isDarkTheme}
+              key={each.id}
+              videoObj={each}
+            />
+          ))}
+        </ul>
       ) : (
         <div className="no-videos-container">
           <img

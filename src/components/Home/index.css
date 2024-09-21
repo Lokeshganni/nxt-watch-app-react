@@ -1,3 +1,18 @@
+.home-app-container {
+  display: flex;
+  padding: 0;
+}
+
+.home-right-container {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .home-right-container {
+    width: 80%;
+  }
+}
+
 .home-main-content-container {
   min-height: auto;
 }
@@ -7,6 +22,12 @@
   width: 100%;
   display: flex;
   align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .search-bar-container {
+    width: 40%;
+  }
 }
 
 .search-bar-container input {
@@ -20,6 +41,12 @@
   font-size: 14px;
 }
 
+@media screen and (min-width: 768px) {
+  .search-bar-container input {
+    height: 30px;
+  }
+}
+
 .search-bar-container button {
   padding: 5px 20px;
   border: 1px solid #606060;
@@ -30,6 +57,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .search-bar-container button {
+    height: 30px;
+  }
 }
 
 .search-bar-container button:hover {
@@ -55,6 +88,12 @@
 
 .failure-container img {
   width: 70%;
+}
+
+@media screen and (min-width: 768px) {
+  .failure-container img {
+    width: 50%;
+  }
 }
 
 .failure-container h1 {
