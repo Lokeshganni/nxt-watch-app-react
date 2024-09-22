@@ -3,6 +3,16 @@
   width: 100%;
   margin-bottom: 20px;
   font-family: 'Roboto';
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.video-li-card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.video-li-card-container:active {
+  transform: scale(0.99);
 }
 
 @media screen and (min-width: 768px) {
@@ -19,6 +29,7 @@
 
 .thumbnail-img {
   width: 100%;
+  border-radius: 10px;
 }
 
 .profile-img {
@@ -40,4 +51,8 @@
 .views-and-date-para {
   font-size: 16px;
   margin: 0;
+}
+
+.link-ele {
+  text-decoration: none;
 }

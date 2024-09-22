@@ -9,12 +9,21 @@
 
 @media screen and (min-width: 768px) {
   .home-right-container {
-    width: 80%;
+    margin-left: 20%;
+    margin-top: 10vh;
+    flex: 1;
+    align-self: flex-end;
   }
 }
 
 .home-main-content-container {
   min-height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .home-main-content-container {
+    min-height: 90vh;
+  }
 }
 
 .search-bar-container {

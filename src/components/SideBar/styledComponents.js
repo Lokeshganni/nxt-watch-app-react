@@ -5,12 +5,12 @@ export const SidebarMainContainer = styled.div`
 `
 export const ContactUsHeading = styled.h1`
   color: ${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')};
-  font-size: 20px;
+  font-size: 18px;
 `
 
 export const ContactUsPara = styled.p`
   color: ${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')};
-  font-size: 16px;
+  font-size: 14px;
 `
 
 export const IconWrapper = styled.div`
@@ -23,5 +23,8 @@ export const IconWrapper = styled.div`
 `
 
 export const SidebarTabPara = styled.p`
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')};
+  color: ${props => props.isDarkTheme && '#ffffff'};
+  &:focus {
+    color: red;
+  }
 `

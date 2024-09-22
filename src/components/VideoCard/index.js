@@ -1,4 +1,5 @@
 import {formatDistanceToNow} from 'date-fns'
+import {Link} from 'react-router-dom'
 import {VideoTitle} from './styledComponent'
 import './index.css'
 
@@ -14,19 +15,21 @@ const VideoCard = ({videoObj, isDarkTheme}) => {
 
   return (
     <li className="video-li-card-container">
-      <img className="thumbnail-img" src={thumbnailUrl} alt={id} />
-      <div className="video-description-container">
-        <img className="profile-img" src={profileImageUrl} alt={name} />
-        <div>
-          <VideoTitle isDarkTheme={isDarkTheme} className="video-title">
-            {title}
-          </VideoTitle>
-          <p className="channel-name">{name}</p>
-          <p className="views-and-date-para">
-            {viewCount} views {date} ago
-          </p>
+      <Link className="link-ele" to={`/videos/${id}`}>
+        <img className="thumbnail-img" src={thumbnailUrl} alt={id} />
+        <div className="video-description-container">
+          <img className="profile-img" src={profileImageUrl} alt={name} />
+          <div>
+            <VideoTitle isDarkTheme={isDarkTheme} className="video-title">
+              {title}
+            </VideoTitle>
+            <p className="channel-name">{name}</p>
+            <p className="views-and-date-para">
+              {viewCount} views {date} ago
+            </p>
+          </div>
         </div>
-      </div>
+      </Link>
     </li>
   )
 }

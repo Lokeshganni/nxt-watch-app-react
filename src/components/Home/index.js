@@ -67,6 +67,14 @@ class Home extends Component {
     this.getData()
   }
 
+  handleSearchedTxt = event => {
+    this.setState({searchedTxt: event.target.value})
+  }
+
+  handleSearchBtn = () => {
+    this.getData()
+  }
+
   renderLoaderView = isDarkTheme => (
     <div className="loader-container" data-testid="loader">
       <Loader
@@ -124,6 +132,7 @@ class Home extends Component {
   }
 
   render() {
+    const {searchedTxt} = this.state
     return (
       <div>
         <Header />
@@ -140,8 +149,17 @@ class Home extends Component {
                     className="home-main-content-container"
                   >
                     <div className="search-bar-container">
-                      <InputContainer isDarkTheme={isDarkTheme} type="search" />
-                      <SearchButton isDarkTheme={isDarkTheme} type="button">
+                      <InputContainer
+                        value={searchedTxt}
+                        onChange={this.handleSearchedTxt}
+                        isDarkTheme={isDarkTheme}
+                        type="search"
+                      />
+                      <SearchButton
+                        onClick={this.handleSearchBtn}
+                        isDarkTheme={isDarkTheme}
+                        type="button"
+                      >
                         <LuSearch size={20} />
                       </SearchButton>
                     </div>

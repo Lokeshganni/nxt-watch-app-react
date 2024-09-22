@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {MdDarkMode, MdLightMode} from 'react-icons/md'
 import ThemeContext from '../../context/ThemeContext'
 import {HeaderContainer, SmHamburgBtn, SmLogoutBtn} from './styledComponents'
@@ -71,17 +72,21 @@ const Header = () => {
           >
             <div className="logo-container" data-testid="home">
               {isDarkTheme ? (
-                <img
-                  className="nav-logo-img"
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
-                  alt="website logo"
-                />
+                <Link to="/">
+                  <img
+                    className="nav-logo-img"
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+                    alt="website logo"
+                  />
+                </Link>
               ) : (
-                <img
-                  className="nav-logo-img"
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                  alt="nxt watch logo"
-                />
+                <Link to="/">
+                  <img
+                    className="nav-logo-img"
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                    alt="nxt watch logo"
+                  />
+                </Link>
               )}
             </div>
             {renderSMNavItems(isDarkTheme, toggleTheme)}

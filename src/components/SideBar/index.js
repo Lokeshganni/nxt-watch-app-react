@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {AiFillHome} from 'react-icons/ai'
 import {HiFire} from 'react-icons/hi'
 import {SiYoutubegaming} from 'react-icons/si'
@@ -37,12 +38,14 @@ const SideBar = () => (
               <IconWrapper isDarkTheme={isDarkTheme}>
                 <HiFire />
               </IconWrapper>
-              <SidebarTabPara
-                isDarkTheme={isDarkTheme}
-                className="sidebar-tab-para"
-              >
-                Trending
-              </SidebarTabPara>
+              <Link to="/trending">
+                <SidebarTabPara
+                  isDarkTheme={isDarkTheme}
+                  className="sidebar-tab-para"
+                >
+                  Trending
+                </SidebarTabPara>
+              </Link>
             </button>
             <button className="sidebar-tab-btn" type="button">
               <IconWrapper isDarkTheme={isDarkTheme}>
