@@ -9,7 +9,7 @@ const TrendingVideoItem = ({video}) => {
 
   return (
     <li className="trending-video-item-li-container">
-      <div className="trending-video-item-thumbanail-container">
+      <div className="trending-video-item-thumbnail-container">
         <img className="trending-thumbnail-img" src={thumbnailUrl} alt="img" />
       </div>
       <div className="video-details-container">
