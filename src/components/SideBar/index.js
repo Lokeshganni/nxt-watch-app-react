@@ -24,21 +24,23 @@ const SideBar = () => (
         >
           <div className="sidebar-navigators-main-container">
             <button className="sidebar-tab-btn" type="button">
-              <IconWrapper isDarkTheme={isDarkTheme}>
-                <AiFillHome />
-              </IconWrapper>
-              <SidebarTabPara
-                isDarkTheme={isDarkTheme}
-                className="sidebar-tab-para"
-              >
-                Home
-              </SidebarTabPara>
+              <Link className="sidebar-link-ele" to="/">
+                <IconWrapper isDarkTheme={isDarkTheme}>
+                  <AiFillHome />
+                </IconWrapper>
+                <SidebarTabPara
+                  isDarkTheme={isDarkTheme}
+                  className="sidebar-tab-para"
+                >
+                  Home
+                </SidebarTabPara>
+              </Link>
             </button>
             <button className="sidebar-tab-btn" type="button">
-              <IconWrapper isDarkTheme={isDarkTheme}>
-                <HiFire />
-              </IconWrapper>
-              <Link to="/trending">
+              <Link className="sidebar-link-ele" to="/trending">
+                <IconWrapper isDarkTheme={isDarkTheme}>
+                  <HiFire />
+                </IconWrapper>
                 <SidebarTabPara
                   isDarkTheme={isDarkTheme}
                   className="sidebar-tab-para"
@@ -48,26 +50,30 @@ const SideBar = () => (
               </Link>
             </button>
             <button className="sidebar-tab-btn" type="button">
-              <IconWrapper isDarkTheme={isDarkTheme}>
-                <SiYoutubegaming />
-              </IconWrapper>
-              <SidebarTabPara
-                isDarkTheme={isDarkTheme}
-                className="sidebar-tab-para"
-              >
-                Gaming
-              </SidebarTabPara>
+              <Link className="sidebar-link-ele" to="/gaming">
+                <IconWrapper isDarkTheme={isDarkTheme}>
+                  <SiYoutubegaming />
+                </IconWrapper>
+                <SidebarTabPara
+                  isDarkTheme={isDarkTheme}
+                  className="sidebar-tab-para"
+                >
+                  Gaming
+                </SidebarTabPara>
+              </Link>
             </button>
             <button className="sidebar-tab-btn" type="button">
-              <IconWrapper isDarkTheme={isDarkTheme}>
-                <MdPlaylistAdd />
-              </IconWrapper>
-              <SidebarTabPara
-                isDarkTheme={isDarkTheme}
-                className="sidebar-tab-para"
-              >
-                Saved videos
-              </SidebarTabPara>
+              <Link className="sidebar-link-ele" to="/saved-videos">
+                <IconWrapper isDarkTheme={isDarkTheme}>
+                  <MdPlaylistAdd />
+                </IconWrapper>
+                <SidebarTabPara
+                  isDarkTheme={isDarkTheme}
+                  className="sidebar-tab-para"
+                >
+                  Saved videos
+                </SidebarTabPara>
+              </Link>
             </button>
           </div>
           <div className="sidebar-contact-details-main-container">

@@ -24,8 +24,6 @@
 }
 
 .sidebar-tab-btn {
-  display: flex;
-  align-items: center;
   padding: 5px 20px;
   outline: none;
   border: none;
@@ -40,6 +38,12 @@
 
 .sidebar-tab-btn:active {
   transform: scale(0.96);
+}
+
+.sidebar-link-ele {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .sidebar-tab-para {
