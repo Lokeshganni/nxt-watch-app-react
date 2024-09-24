@@ -1,11 +1,12 @@
 import {Component} from 'react'
-import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import {LuSearch} from 'react-icons/lu'
 import Header from '../Header'
 import HomeBannerSection from '../HomeBannerSection'
 import SideBar from '../SideBar'
 import Videos from '../Videos'
+import FailureView from '../FailureView/failureView'
 import {
   HomeMainContainer,
   InputContainer,
@@ -29,10 +30,10 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.getData()
+    this.getHomeData()
   }
 
-  getData = async () => {
+  getHomeData = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const {searchedTxt} = this.state
     const token = Cookies.get('jwt_token')
@@ -63,20 +64,20 @@ class Home extends Component {
     }
   }
 
-  retryVideos = () => {
-    this.getData()
-  }
-
   handleSearchedTxt = event => {
     this.setState({searchedTxt: event.target.value})
   }
 
-  handleSearchBtn = () => {
-    this.getData()
+  retryVideos = () => {
+    this.getHomeData()
   }
 
-  renderLoaderView = isDarkTheme => (
-    <div className="loader-container" data-testid="loader">
+  handleSearchBtn = () => {
+    this.getHomeData()
+  }
+
+  renderLoader = isDarkTheme => (
+    <div className="home-loader-container" data-testid="loader">
       <Loader
         color={isDarkTheme ? '#ffffff' : '#000000'}
         type="ThreeDots"
@@ -97,35 +98,15 @@ class Home extends Component {
     )
   }
 
-  renderFailureView = isDarkTheme => (
-    <div className="failure-container">
-      <img
-        src={
-          isDarkTheme
-            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
-            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
-        }
-        alt="failure view"
-      />
-      <h1>Oops! Something Went Wrong</h1>
-      <p>
-        We are having some trouble to complete your request. Please try again.
-      </p>
-      <button onClick={() => this.getData()} type="button">
-        Retry
-      </button>
-    </div>
-  )
-
   renderVideosList = isDarkTheme => {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.inProgress:
-        return this.renderLoaderView(isDarkTheme)
+        return this.renderLoader(isDarkTheme)
       case apiStatusConstants.success:
         return this.renderSuccessView(isDarkTheme)
       case apiStatusConstants.failure:
-        return this.renderFailureView(isDarkTheme)
+        return <FailureView getData={this.getHomeData} />
       default:
         return null
     }

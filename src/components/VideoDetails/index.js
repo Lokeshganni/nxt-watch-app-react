@@ -7,9 +7,13 @@ import {MdOutlinePlaylistAdd} from 'react-icons/md'
 import {TiTick} from 'react-icons/ti'
 import Header from '../Header'
 import SideBar from '../SideBar'
+import LoaderView from '../LoaderView/loaderView'
+import FailureView from '../FailureView/failureView'
 import ThemeContext from '../../context/ThemeContext'
+import {addBookmark} from '../../Services/bookmarkService'
 import {
   Container,
+  VideoItemMainContainer,
   Title,
   ChannelName,
   SubscribersCount,
@@ -87,7 +91,8 @@ class VideoDetails extends Component {
     }
   }
 
-  handleSaveVideo = () => {
+  handleSaveVideo = videoDetails => {
+    addBookmark(videoDetails)
     this.setState({notification: 'video saved successfully!'})
 
     setTimeout(() => {
@@ -95,108 +100,128 @@ class VideoDetails extends Component {
     }, 3000)
   }
 
-  render() {
-    const {videoDetails, channelObj, date, notification} = this.state
-
-    return (
-      <ThemeContext.Consumer>
-        {value => {
-          const {isDarkTheme} = value
-          return (
-            <>
-              <Header />
-              <Container isDarkTheme={isDarkTheme}>
-                <SideBar />
-                <div className="video-item-details-container">
-                  <div className="responsive-container">
-                    <ReactPlayer
-                      url={videoDetails.videoUrl}
-                      controls
-                      width="100%"
-                      height="100%"
-                      className="react-player"
-                    />
-                  </div>
-                  <Title isDarkTheme={isDarkTheme}>{videoDetails.title}</Title>
-                  <div className="views-and-likes-container">
-                    <div className="views-container">
-                      <p className="views-and-date-para">
-                        {videoDetails.viewCount} views {date} ago
-                      </p>
-                    </div>
-                    <AllInteractionsContainer
-                      isDarkTheme={isDarkTheme}
-                      className="like-dislike-save-container"
-                    >
-                      <InteractionButton
-                        isDarkTheme={isDarkTheme}
-                        className="interaction-btn"
-                        type="button"
-                      >
-                        <BiLike className="interaction-icon" />
-                        <p className="interaction-para">Like</p>
-                      </InteractionButton>
-                      <InteractionButton
-                        isDarkTheme={isDarkTheme}
-                        className="interaction-btn"
-                        type="button"
-                      >
-                        <BiDislike className="interaction-icon" />
-                        <p className="interaction-para">Dislike</p>
-                      </InteractionButton>
-                      <InteractionButton
-                        isDarkTheme={isDarkTheme}
-                        className="interaction-btn"
-                        type="button"
-                        onClick={this.handleSaveVideo}
-                      >
-                        <MdOutlinePlaylistAdd className="interaction-icon" />
-                        <p className="interaction-para">Save</p>
-                      </InteractionButton>
-                    </AllInteractionsContainer>
-                    {notification && (
-                      <div className="notification-container">
-                        <TiTick className="notification-tick-icon" />
-                        <p className="notification">{notification}</p>
-                      </div>
-                    )}
-                  </div>
-                  <hr />
-                  <div>
-                    <div className="channel-logo-and-name-container">
-                      <img
-                        className="channel-logo"
-                        src={channelObj.profileImageUrl}
-                        alt="img"
-                      />
-                      <div>
-                        <ChannelName isDarkTheme={isDarkTheme}>
-                          {channelObj.name}
-                        </ChannelName>
-                        <SubscribersCount isDarkTheme={isDarkTheme}>
-                          {channelObj.subscriberCount} subscribers
-                        </SubscribersCount>
-                        <ChannelDescription
-                          className="lg-channel-description"
-                          isDarkTheme={isDarkTheme}
-                        >
-                          {videoDetails.description}
-                        </ChannelDescription>
-                      </div>
-                    </div>
-                    <ChannelDescription
-                      className="sm-channel-description"
-                      isDarkTheme={isDarkTheme}
-                    >
-                      {videoDetails.description}
-                    </ChannelDescription>
-                  </div>
+  renderVideoItemSuccessView = () => (
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const {videoDetails, channelObj, date, notification} = this.state
+        return (
+          <VideoItemMainContainer
+            isDarkTheme={isDarkTheme}
+            className="video-item-details-container"
+          >
+            <div className="responsive-container">
+              <ReactPlayer
+                url={videoDetails.videoUrl}
+                controls
+                width="100%"
+                height="100%"
+                className="react-player"
+              />
+            </div>
+            <Title isDarkTheme={isDarkTheme}>{videoDetails.title}</Title>
+            <div className="views-and-likes-container">
+              <div className="views-container">
+                <p className="views-and-date-para">
+                  {videoDetails.viewCount} views {date} ago
+                </p>
+              </div>
+              <AllInteractionsContainer
+                isDarkTheme={isDarkTheme}
+                className="like-dislike-save-container"
+              >
+                <InteractionButton
+                  isDarkTheme={isDarkTheme}
+                  className="interaction-btn"
+                  type="button"
+                >
+                  <BiLike className="interaction-icon" />
+                  <p className="interaction-para">Like</p>
+                </InteractionButton>
+                <InteractionButton
+                  isDarkTheme={isDarkTheme}
+                  className="interaction-btn"
+                  type="button"
+                >
+                  <BiDislike className="interaction-icon" />
+                  <p className="interaction-para">Dislike</p>
+                </InteractionButton>
+                <InteractionButton
+                  isDarkTheme={isDarkTheme}
+                  className="interaction-btn"
+                  type="button"
+                  onClick={this.handleSaveVideo}
+                >
+                  <MdOutlinePlaylistAdd className="interaction-icon" />
+                  <p className="interaction-para">Save</p>
+                </InteractionButton>
+              </AllInteractionsContainer>
+              {notification && (
+                <div className="notification-container">
+                  <TiTick className="notification-tick-icon" />
+                  <p className="notification">{notification}</p>
                 </div>
-              </Container>
-            </>
-          )
-        }}
-      </ThemeContext.Consumer>
+              )}
+            </div>
+            <hr />
+            <div>
+              <div className="channel-logo-and-name-container">
+                <img
+                  className="channel-logo"
+                  src={channelObj.profileImageUrl}
+                  alt="img"
+                />
+                <div>
+                  <ChannelName isDarkTheme={isDarkTheme}>
+                    {channelObj.name}
+                  </ChannelName>
+                  <SubscribersCount isDarkTheme={isDarkTheme}>
+                    {channelObj.subscriberCount} subscribers
+                  </SubscribersCount>
+                  <ChannelDescription
+                    className="lg-channel-description"
+                    isDarkTheme={isDarkTheme}
+                  >
+                    {videoDetails.description}
+                  </ChannelDescription>
+                </div>
+              </div>
+              <ChannelDescription
+                className="sm-channel-description"
+                isDarkTheme={isDarkTheme}
+              >
+                {videoDetails.description}
+              </ChannelDescription>
+            </div>
+          </VideoItemMainContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
+  )
+
+  renderVideoItemDetails = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return <LoaderView />
+      case apiStatusConstants.success:
+        return this.renderVideoItemSuccessView()
+      case apiStatusConstants.failure:
+        return <FailureView getData={this.getVideoDetails} />
+      default:
+        return null
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <Header />
+        <Container>
+          <SideBar />
+          {this.renderVideoItemDetails()}
+        </Container>
+      </>
     )
   }
 }

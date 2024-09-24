@@ -7,6 +7,7 @@
 @media screen and (min-width: 768px) {
   .trending-video-item-li-container {
     flex-direction: row;
+    justify-content: flex-start;
     margin-bottom: 25px;
   }
 }
@@ -26,7 +27,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .trending-video-item-thumbanail-container {
+  .trending-video-item-thumbnail-container {
     width: 500px;
   }
 

@@ -1,29 +1,87 @@
+import {Component} from 'react'
+import {HiFire} from 'react-icons/hi'
 import Header from '../Header'
 import SideBar from '../SideBar'
+import LoaderView from '../LoaderView/loaderView'
+import FailureView from '../FailureView/failureView'
 import ThemeContext from '../../context/ThemeContext'
-import {SavedVideosContainer} from './styledComponent'
+import {getBookmarks} from '../../Services/bookmarkService'
+import {
+  SavedVideosContainer,
+  SavedVideosTitleContainer,
+  SavedVideosTitle,
+  SavedVideosIconWrapper,
+} from './styledComponent'
 import './savedVideos.css'
 
-const Trending = () => (
-  <ThemeContext.Consumer>
-    {value => {
-      const {isDarkTheme} = value
-      return (
-        <>
-          <Header />
-          <div className="saved-videos-main-container">
-            <SideBar />
-            <SavedVideosContainer
+class Trending extends Component {
+  state = {savedVideosList: []}
+
+  componentDidMount() {
+    this.getSavedVideos()
+  }
+
+  getSavedVideos = () => {
+    const bookmarkedData = getBookmarks()
+    this.setState({savedVideosList: bookmarkedData})
+  }
+
+  renderEmptySavedVideos = isDarkTheme => (
+    <SavedVideosContainer
+      isDarkTheme={isDarkTheme}
+      className="saved-videos-content-container no-saved-videos-container"
+    >
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png "
+        alt="no saved videos"
+      />
+      <h1>No saved videos found</h1>
+      <p>You can save your videos while watching them</p>
+    </SavedVideosContainer>
+  )
+
+  renderSavedVideos = () => (
+    <ThemeContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
+        const {savedVideosList} = this.state
+        console.log(savedVideosList)
+        if (savedVideosList.length === 0) {
+          return this.renderEmptySavedVideos(isDarkTheme)
+        }
+        return (
+          <SavedVideosContainer
+            isDarkTheme={isDarkTheme}
+            className="saved-videos-content-container"
+          >
+            <SavedVideosTitleContainer
               isDarkTheme={isDarkTheme}
-              className="saved-videos-content-container"
+              className="gaming-title-container"
             >
-              <h1 isDarkTheme={isDarkTheme}>Saved Videos</h1>
-            </SavedVideosContainer>
-          </div>
-        </>
-      )
-    }}
-  </ThemeContext.Consumer>
-)
+              <SavedVideosIconWrapper isDarkTheme={isDarkTheme}>
+                <HiFire className="gaming-title-icon" />
+              </SavedVideosIconWrapper>
+              <SavedVideosTitle isDarkTheme={isDarkTheme}>
+                Saved Videos
+              </SavedVideosTitle>
+            </SavedVideosTitleContainer>
+          </SavedVideosContainer>
+        )
+      }}
+    </ThemeContext.Consumer>
+  )
+
+  render() {
+    return (
+      <>
+        <Header />
+        <div className="saved-videos-main-container">
+          <SideBar />
+          {this.renderSavedVideos()}
+        </div>
+      </>
+    )
+  }
+}
 
 export default Trending

@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9 ')};
   display: flex;
+`
+
+export const VideoItemMainContainer = styled.div`
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9 ')};
   color: ${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')};
 `
 

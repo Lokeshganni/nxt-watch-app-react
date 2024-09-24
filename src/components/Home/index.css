@@ -82,54 +82,7 @@
   transform: scale(0.96);
 }
 
-.loader-container {
+.home-loader-container {
   display: flex;
   justify-content: center;
-}
-
-.failure-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 25px;
-  text-align: center;
-}
-
-.failure-container img {
-  width: 70%;
-}
-
-@media screen and (min-width: 768px) {
-  .failure-container img {
-    width: 50%;
-  }
-}
-
-.failure-container h1 {
-  font-size: 24px;
-}
-
-.failure-container p {
-  color: #475569;
-  font-size: 18px;
-  margin: 0;
-}
-
-.failure-container button {
-  margin: 20px;
-  border: none;
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 5px;
-  padding: 10px 24px;
-  outline: none;
-  background-color: #4f46e5;
-}
-
-.failure-container button:hover {
-  transform: scale(1.02);
-}
-
-.failure-container button:active {
-  transform: scale(0.96);
 }

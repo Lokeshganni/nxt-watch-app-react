@@ -1,0 +1,45 @@
+.game-item-li-container {
+  list-style-type: none;
+  width: 50%;
+  padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .game-item-li-container {
+    width: 25%;
+  }
+}
+
+.game-item-li-container img {
+  width: 100%;
+}
+
+.game-item-li-container h1 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.watching-and-worldwide-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 10px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .watching-and-worldwide-container {
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 15px 0;
+  }
+}
+
+.game-item-li-container p {
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .game-item-li-container p {
+    margin: 5px 10px 5px 0;
+  }
+}

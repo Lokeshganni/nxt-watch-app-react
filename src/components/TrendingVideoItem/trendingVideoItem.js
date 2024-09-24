@@ -2,7 +2,7 @@ import {formatDistanceToNow} from 'date-fns'
 import {Title, ChannelName, ViewsCount} from './styledComponent'
 import './trendingVideoItem.css'
 
-const TrendingVideoItem = ({video}) => {
+const TrendingVideoItem = ({video, isDarkTheme}) => {
   const {channel, publishedAt, thumbnailUrl, title, viewCount} = video
   const dateDistance = formatDistanceToNow(new Date(publishedAt))
   const date = dateDistance.split(' ').slice(1, 3).join(' ')
@@ -20,8 +20,13 @@ const TrendingVideoItem = ({video}) => {
             alt="img"
           />
         </div>
-        <div>
-          <Title className="video-title">{title}</Title>
+        <div className="">
+          <Title
+            style={{color: `${isDarkTheme && '#ffffff'}`}}
+            className="video-title"
+          >
+            {title}
+          </Title>
           <div className="channel-name-and-views-container">
             <ChannelName className="channel-name">{channel.name}</ChannelName>
             <ViewsCount>
