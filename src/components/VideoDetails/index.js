@@ -10,7 +10,7 @@ import SideBar from '../SideBar'
 import LoaderView from '../LoaderView/loaderView'
 import FailureView from '../FailureView/failureView'
 import ThemeContext from '../../context/ThemeContext'
-import {addBookmark} from '../../Services/bookmarkService'
+import {addBookmark} from '../../services/bookmarkService'
 import {
   Container,
   VideoItemMainContainer,

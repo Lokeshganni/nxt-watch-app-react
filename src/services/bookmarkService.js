@@ -7,8 +7,9 @@ export const getBookmarks = () => {
 
 export const addBookmark = video => {
   const bookmarks = getBookmarks()
-  if (!bookmarks.find(b => b.id === video.id)) {
+  if (bookmarks.find(b => b.id !== video.id)) {
     bookmarks.push(video)
+    console.log('bookmark added')
     localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks))
   }
 }

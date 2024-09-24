@@ -110,3 +110,45 @@
 .nav-dark-theme-icon {
   color: white;
 }
+
+.popup-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.popup-text {
+  font-size: 18px;
+  margin: 0 0 20px 0;
+}
+
+.cancel-button {
+  border: 1px solid #909090;
+  color: #909090;
+  background-color: transparent;
+}
+
+.confirm-button {
+  border: none;
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.popup-btn {
+  padding: 10px 24px;
+  cursor: pointer;
+  margin: 0 10px;
+  outline: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.popup-btn:hover {
+  transform: scale(1.02);
+}
+
+.popup-btn:active {
+  transform: scale(0.96);
+}

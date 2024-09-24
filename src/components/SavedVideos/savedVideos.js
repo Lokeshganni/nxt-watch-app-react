@@ -2,10 +2,8 @@ import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
 import Header from '../Header'
 import SideBar from '../SideBar'
-import LoaderView from '../LoaderView/loaderView'
-import FailureView from '../FailureView/failureView'
 import ThemeContext from '../../context/ThemeContext'
-import {getBookmarks} from '../../Services/bookmarkService'
+import {getBookmarks} from '../../services/bookmarkService'
 import {
   SavedVideosContainer,
   SavedVideosTitleContainer,
@@ -35,7 +33,9 @@ class Trending extends Component {
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png "
         alt="no saved videos"
       />
-      <h1>No saved videos found</h1>
+      <h1 style={{color: `${isDarkTheme ? '#ffffff' : '#000000'}`}}>
+        No saved videos found
+      </h1>
       <p>You can save your videos while watching them</p>
     </SavedVideosContainer>
   )
@@ -45,7 +45,6 @@ class Trending extends Component {
       {value => {
         const {isDarkTheme} = value
         const {savedVideosList} = this.state
-        console.log(savedVideosList)
         if (savedVideosList.length === 0) {
           return this.renderEmptySavedVideos(isDarkTheme)
         }

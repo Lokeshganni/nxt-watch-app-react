@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom'
 import {MdDarkMode, MdLightMode} from 'react-icons/md'
+import ReactPopup from '../ReactPopup/reactPopup'
 import ThemeContext from '../../context/ThemeContext'
 import {HeaderContainer, SmHamburgBtn, SmLogoutBtn} from './styledComponents'
 import './index.css'
@@ -25,9 +26,13 @@ const Header = () => {
           <SmHamburgBtn isDarkTheme={isDarkTheme} size={24} />
         </button>
       </li>
-      <button className="sm-logout-btn-icon nav-btn btn" type="button">
-        <SmLogoutBtn isDarkTheme={isDarkTheme} size={24} />
-      </button>
+      <ReactPopup
+        triggerBtn={
+          <button className="sm-logout-btn-icon nav-btn btn" type="button">
+            <SmLogoutBtn isDarkTheme={isDarkTheme} size={24} />
+          </button>
+        }
+      />
     </ul>
   )
 
@@ -55,9 +60,13 @@ const Header = () => {
           />
         </button>
       </li>
-      <button className="logout-btn btn" type="button">
-        Logout
-      </button>
+      <ReactPopup
+        triggerBtn={
+          <button className="logout-btn btn" type="button">
+            Logout
+          </button>
+        }
+      />
     </ul>
   )
 
