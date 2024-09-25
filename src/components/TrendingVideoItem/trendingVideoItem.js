@@ -22,7 +22,7 @@ const TrendingVideoItem = ({video, isDarkTheme}) => {
         </div>
         <div className="">
           <Title
-            style={{color: `${isDarkTheme && '#ffffff'}`}}
+            style={{color: `${isDarkTheme ? '#ffffff' : '#000000'}`}}
             className="video-title"
           >
             {title}

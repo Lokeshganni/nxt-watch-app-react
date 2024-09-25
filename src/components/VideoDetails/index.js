@@ -91,7 +91,8 @@ class VideoDetails extends Component {
     }
   }
 
-  handleSaveVideo = videoDetails => {
+  handleSaveVideo = () => {
+    const {videoDetails} = this.state
     addBookmark(videoDetails)
     this.setState({notification: 'video saved successfully!'})
 

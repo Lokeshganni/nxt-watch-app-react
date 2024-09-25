@@ -1,7 +1,9 @@
 import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
+import {BsThreeDotsVertical} from 'react-icons/bs'
 import Header from '../Header'
 import SideBar from '../SideBar'
+import TrendingVideoItem from '../TrendingVideoItem/trendingVideoItem'
 import ThemeContext from '../../context/ThemeContext'
 import {getBookmarks} from '../../services/bookmarkService'
 import {
@@ -45,6 +47,7 @@ class Trending extends Component {
       {value => {
         const {isDarkTheme} = value
         const {savedVideosList} = this.state
+        console.log(savedVideosList)
         if (savedVideosList.length === 0) {
           return this.renderEmptySavedVideos(isDarkTheme)
         }
@@ -64,6 +67,20 @@ class Trending extends Component {
                 Saved Videos
               </SavedVideosTitle>
             </SavedVideosTitleContainer>
+            <ul className="saved-videos-ul-container">
+              {savedVideosList.map(each => (
+                <div className="saved-video-item-card">
+                  <TrendingVideoItem
+                    isDarkTheme={isDarkTheme}
+                    key={each.id}
+                    video={each}
+                  />
+                  <button className="three-dots-icon-btn" type="button">
+                    <BsThreeDotsVertical />
+                  </button>
+                </div>
+              ))}
+            </ul>
           </SavedVideosContainer>
         )
       }}
